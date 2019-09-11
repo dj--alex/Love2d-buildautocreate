@@ -1,0 +1,44 @@
+#!/bin/sh
+
+# Variables
+GAME_NAME="M2K"
+GAME_SCRIPT="start_game"
+GAME_ICON="icon.png"
+################################################
+# Thanks to Vitally_D for the idea of the script
+################################################
+
+# Directories description
+[ -z "$XDG_CONFIG_HOME" ] && XDG_CONFIG_HOME="$HOME/.config"
+. "$XDG_CONFIG_HOME/user-dirs.dirs"
+[ -z "$XDG_DATA_HOME" ] && XDG_DATA_HOME="$HOME/.local/share"
+[ -z "$XDG_DESKTOP_DIR" ] && XDG_DESKTOP_DIR="$HOME/Desktop"
+appdir="$XDG_DATA_HOME/applications"
+desktop_file_app="$appdir/$GAME_NAME.desktop"
+desktop_file_desk="$XDG_DESKTOP_DIR/$GAME_NAME.desktop"
+
+# Delete desktop files on -d
+if [ "$1" = "-d" ]; then
+	rm -f "$desktop_file_desk" "$desktop_file_app"
+	exit 0
+fi
+
+# Create desktop files
+[ ! -d "$appdir" ] && mkdir -p "$appdir"
+cd "$(dirname "$0")"
+gamedir="$(pwd)"
+cat << EOM | tee "$desktop_file_app" "$desktop_file_desk"
+[Desktop Entry]
+Encoding=UTF-8
+Name=$GAME_NAME
+GenericName=$GAME_NAME
+Exec="$gamedir/$GAME_SCRIPT"
+Terminal=false
+Icon=$gamedir/$GAME_ICON
+Type=Application
+Categories=Game;
+StartupNotify=true
+Comment=Start $GAME_NAME
+Comment[ru_RU]=Запустить $GAME_NAME
+EOM
+chmod +x "$desktop_file_app" "$desktop_file_desk"
