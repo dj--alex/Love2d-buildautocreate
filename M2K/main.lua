@@ -6,9 +6,9 @@ function love.load()
 
   lg.setBackgroundColor(255,255,255)
 
-  img = lg.newImage("startgamedevbanner.png")
-  snd = la.newSource("samplegamesong.ogg")
-  snd2 = la.newSource("cat.ogg")
+  img = lg.newImage("Textures/0magic.png")
+  snd = la.newSource("Sounds/ucf_-_real7ime_converterintro.xm","stream")
+  snd2 = la.newSource("Sounds/zwuk1.mp3","stream")
   snd:setLooping(true)
   snd:play()
 
@@ -51,7 +51,7 @@ function love.draw()
   lg.setColor(0,0,0,150)
   lg.rectangle("fill",w/4,3*(h/8),w/2,h/4)
   lg.setColor(255,255,255)
-  lg.printf("Start Gamedev thinks you forgot to replace the game.love file",w/4+w*.05,3.5*(h/8),w/2-w*.1,"center")
+  lg.printf("Start Gamedev thinks you forgot to replace the game.love file (m2ktest.lib)",w/4+w*.05,3.5*(h/8),w/2-w*.1,"center")
 end
 
 function love.mousepressed()

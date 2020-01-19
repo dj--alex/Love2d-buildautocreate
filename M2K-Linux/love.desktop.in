@@ -2,9 +2,9 @@
 Name=LÖVE
 Comment=The unquestionably awesome 2D game engine
 MimeType=application/x-love-game;
-Exec=%BINPREFIX%love %f
+Exec=%BINARY% %f
 Type=Application
 Categories=Development;Game;
 Terminal=false
-Icon=%ICONPREFIX%love
+Icon=%ICON%
 NoDisplay=true
